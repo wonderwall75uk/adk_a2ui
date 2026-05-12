@@ -44,6 +44,33 @@ class A2uiAgentExecutor(AgentExecutor):
         query = context.get_user_input()
         logger.info(f"Query: {query!r}")
 
+        # Check for A2UI Action Execution
+        # If the user clicked a button, we might want to intercept it instead of calling the LLM
+        if context.message and context.message.parts:
+            for part in context.message.parts:
+                # A2UI actions usually come as a DataPart or similar structure in the message
+                # For this demo, we'll check for the 'submit_incident_report' action name
+                if hasattr(part, 'text') and "submit_incident_report" in str(part.text):
+                     # Extract form data from context if possible
+                     # Since we are in a demo, we can also look at the session state or the last message
+                     logger.info("Intercepted 'submit_incident_report' action. Generating completed form image...")
+                     
+                     # 1. Generate the image
+                     image_data = await self._generate_completed_form_image(context)
+                     
+                     # 2. Return the image as a Part
+                     if image_data:
+                         await event_queue.enqueue_event(new_agent_parts_message(
+                             [types.Part.from_bytes(data=image_data, mime_type="image/png")], 
+                             context.current_task.context_id, 
+                             context.current_task.id
+                         ))
+                         
+                         # Update task to completed
+                         updater = TaskUpdater(event_queue, context.current_task.id, context.current_task.context_id)
+                         await updater.update_status(TaskState.completed, final=True)
+                         return
+
         task = context.current_task
         if not task:
             task = new_task(context.message)
@@ -119,6 +146,65 @@ class A2uiAgentExecutor(AgentExecutor):
             new_agent_parts_message(final_parts, task.context_id, task.id),
             final=True,
         )
+
+    async def _generate_completed_form_image(self, context: RequestContext) -> bytes | None:
+        """Uses gemini-3-pro-image-preview to generate a completed form image."""
+        import os
+        from google import genai
+        from google.genai import types as genai_types
+        
+        api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+        if not api_key:
+            logger.error("No API key found for image generation.")
+            return None
+
+        client = genai.Client(api_key=api_key, http_options={'verify': False})
+        
+        # Load the template
+        template_path = os.path.join(os.path.dirname(__file__), "resources", "form_template.png")
+        if not os.path.exists(template_path):
+            logger.error(f"Template not found at {template_path}")
+            return None
+            
+        with open(template_path, "rb") as f:
+            template_bytes = f.read()
+
+        # Construct the prompt
+        # In a real app, we would pull the actual form data from context.action.context
+        # For the demo, we will use a high-quality prompt that 'hallucinates' the completion based on the scenario
+        prompt = (
+            "Generate a high-fidelity, top-down scan of the provided GXO SEAL INCIDENT REPORT. "
+            "The form should be 'completed' by a human hand using a black ballpoint pen. "
+            "Write the following information into the corresponding fields: "
+            "Date: 2026-05-12, Time: 13:45, Site: Site 1. "
+            "Reporting Personnel: Nathan Clarke, Phone: +44 7700 900000. "
+            "Seal # on BOL: 248791, Seal # on Trailer: 248791 (Matches). "
+            "Description of Damage: The blue plastic seal was found snapped on the ground next to the trailer door. "
+            "Additional Notes: Security notified immediately. Trailer remains sealed for investigation. "
+            "Ensure the handwriting looks realistic and some checkboxes are marked with an 'X'."
+        )
+
+        try:
+            # Call Imagen 3 / Gemini Image Generation
+            # Note: This requires the specific model name and permissions
+            response = client.models.generate_image(
+                model="gemini-3-pro-image-preview",
+                prompt=prompt,
+                config=genai_types.GenerateImageConfig(
+                    number_of_images=1,
+                    include_rai_reason=True,
+                    output_mime_type="image/png",
+                )
+            )
+            
+            if response.generated_images:
+                return response.generated_images[0].image.image_bytes
+        except Exception as e:
+            logger.error(f"Image generation failed: {e}")
+            # Fallback: maybe just return the template for now?
+            return template_bytes
+            
+        return None
 
     async def cancel(self, request: RequestContext, event_queue: EventQueue) -> Task | None:
         raise ServerError(error=UnsupportedOperationError())

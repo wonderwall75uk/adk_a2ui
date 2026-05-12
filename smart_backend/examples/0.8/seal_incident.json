@@ -732,7 +732,15 @@
               "primary": true,
               "child": "submit-text",
               "action": {
-                "name": "submit_incident_report"
+                "name": "submit_incident_report",
+                "context": [
+                  {
+                    "key": "formData",
+                    "value": {
+                      "path": "/form"
+                    }
+                  }
+                ]
               }
             }
           }
@@ -767,11 +775,11 @@
             },
             {
               "key": "siteCodePicker",
-              "valueString": ""
+              "valueString": "site1"
             },
             {
               "key": "reportingNameInput",
-              "valueString": ""
+              "valueString": "Sam"
             },
             {
               "key": "reportingPhoneInput",

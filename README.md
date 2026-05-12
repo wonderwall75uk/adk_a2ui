@@ -5,7 +5,7 @@ An [Agent Development Kit (ADK)](https://google.github.io/adk-docs/) agent that 
 ## Architecture
 
 ```
-Browser (localhost:8080)
+Browser (localhost:8000)
   └── ADK Web UI
         └── my_agent_proxy/     ← RemoteA2aAgent (ADK entry point)
               └── HTTP → my_agent A2A server (localhost:10003)
@@ -17,7 +17,7 @@ Two processes run concurrently:
 | Process | What it is | Port |
 |---------|-----------|------|
 | `my_agent` | A2A server — runs the LLM, converts `<a2ui-json>` responses to A2A DataParts | 10003 |
-| `adk web` | ADK web UI — serves the chat interface, proxies via `my_agent_proxy` | 8080 |
+| `adk web` | ADK web UI — serves the chat interface, proxies via `my_agent_proxy` | 8000 |
 
 ## Prerequisites
 
@@ -110,10 +110,10 @@ adk web
 
 Expected output:
 ```
-INFO:     Uvicorn running on http://localhost:8080
+INFO:     Uvicorn running on http://127.0.0.1:8000
 ```
 
-Then open **http://localhost:8080** in your browser, select **my_agent_proxy** from the agent dropdown, and start chatting.
+Then open **http://127.0.0.1:8000** in your browser, select **my_agent_proxy** from the agent dropdown, and start chatting.
 
 ## What it can do
 
