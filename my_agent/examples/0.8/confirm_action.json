@@ -1,0 +1,168 @@
+[
+  {
+    "beginRendering": {
+      "surfaceId": "confirm",
+      "root": "root",
+      "styles": { "primaryColor": "#EA4335", "font": "Google Sans" }
+    }
+  },
+  {
+    "surfaceUpdate": {
+      "surfaceId": "confirm",
+      "components": [
+        {
+          "id": "root",
+          "component": { "Column": { "children": { "explicitList": ["confirm-card"] } } }
+        },
+        {
+          "id": "confirm-card",
+          "component": { "Card": { "child": "confirm-col" } }
+        },
+        {
+          "id": "confirm-col",
+          "component": {
+            "Column": {
+              "children": {
+                "explicitList": [
+                  "icon-row",
+                  "confirm-title",
+                  "confirm-body",
+                  "summary-divider",
+                  "detail-rows",
+                  "action-divider",
+                  "action-row"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "icon-row",
+          "component": {
+            "Row": {
+              "alignment": "center",
+              "children": { "explicitList": ["warn-icon", "warn-label"] }
+            }
+          }
+        },
+        {
+          "id": "warn-icon",
+          "component": { "Icon": { "name": { "literalString": "warning" } } }
+        },
+        {
+          "id": "warn-label",
+          "component": { "Text": { "usageHint": "h5", "text": { "literalString": "Please confirm" } } }
+        },
+        {
+          "id": "confirm-title",
+          "component": { "Text": { "usageHint": "h2", "text": { "path": "/confirm/title" } } }
+        },
+        {
+          "id": "confirm-body",
+          "component": { "Text": { "usageHint": "body", "text": { "path": "/confirm/body" } } }
+        },
+        {
+          "id": "summary-divider",
+          "component": { "Divider": {} }
+        },
+        {
+          "id": "detail-rows",
+          "component": {
+            "List": {
+              "direction": "vertical",
+              "children": { "template": { "componentId": "detail-row-template", "dataBinding": "/confirm/details" } }
+            }
+          }
+        },
+        {
+          "id": "detail-row-template",
+          "component": {
+            "Row": {
+              "distribution": "spaceBetween",
+              "children": { "explicitList": ["detail-key", "detail-val"] }
+            }
+          }
+        },
+        {
+          "id": "detail-key",
+          "component": { "Text": { "usageHint": "caption", "text": { "path": "/label" } } }
+        },
+        {
+          "id": "detail-val",
+          "component": { "Text": { "usageHint": "body", "text": { "path": "/value" } } }
+        },
+        {
+          "id": "action-divider",
+          "component": { "Divider": {} }
+        },
+        {
+          "id": "action-row",
+          "component": {
+            "Row": {
+              "distribution": "end",
+              "children": { "explicitList": ["back-btn", "confirm-btn"] }
+            }
+          }
+        },
+        {
+          "id": "back-btn",
+          "component": {
+            "Button": {
+              "child": "back-text",
+              "action": { "name": "go_back" }
+            }
+          }
+        },
+        {
+          "id": "back-text",
+          "component": { "Text": { "text": { "literalString": "Go Back" } } }
+        },
+        {
+          "id": "confirm-btn",
+          "component": {
+            "Button": {
+              "primary": true,
+              "child": "confirm-text",
+              "action": {
+                "name": "confirm_action",
+                "context": [
+                  { "key": "actionId", "value": { "path": "/confirm/actionId" } }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "confirm-text",
+          "component": { "Text": { "text": { "path": "/confirm/confirmLabel" } } }
+        }
+      ]
+    }
+  },
+  {
+    "dataModelUpdate": {
+      "surfaceId": "confirm",
+      "path": "/",
+      "contents": [
+        {
+          "key": "confirm",
+          "valueMap": [
+            { "key": "title",        "valueString": "Delete project 'Alpha'?" },
+            { "key": "body",         "valueString": "This action is permanent and cannot be undone. All tasks, files, and history will be removed." },
+            { "key": "confirmLabel", "valueString": "Yes, Delete" },
+            { "key": "actionId",     "valueString": "delete_project_alpha" },
+            {
+              "key": "details",
+              "valueMap": [
+                { "key": "d1", "valueMap": [ { "key": "label", "valueString": "Project"   }, { "key": "value", "valueString": "Alpha"      } ] },
+                { "key": "d2", "valueMap": [ { "key": "label", "valueString": "Tasks"     }, { "key": "value", "valueString": "14 items"   } ] },
+                { "key": "d3", "valueMap": [ { "key": "label", "valueString": "Files"     }, { "key": "value", "valueString": "3.2 GB"     } ] },
+                { "key": "d4", "valueMap": [ { "key": "label", "valueString": "Created"   }, { "key": "value", "valueString": "2024-01-15" } ] }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

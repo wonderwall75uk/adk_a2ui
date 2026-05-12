@@ -1,0 +1,183 @@
+[
+  {
+    "beginRendering": {
+      "surfaceId": "intake",
+      "root": "root",
+      "styles": { "primaryColor": "#4285F4", "font": "Google Sans" }
+    }
+  },
+  {
+    "surfaceUpdate": {
+      "surfaceId": "intake",
+      "components": [
+        {
+          "id": "root",
+          "component": { "Column": { "children": { "explicitList": ["form-card"] } } }
+        },
+        {
+          "id": "form-card",
+          "component": { "Card": { "child": "form-col" } }
+        },
+        {
+          "id": "form-col",
+          "component": {
+            "Column": {
+              "children": {
+                "explicitList": [
+                  "form-title",
+                  "name-field",
+                  "priority-label",
+                  "priority-picker",
+                  "categories-label",
+                  "categories-picker",
+                  "due-date",
+                  "urgent-check",
+                  "form-divider",
+                  "button-row"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "form-title",
+          "component": { "Text": { "usageHint": "h2", "text": { "literalString": "New Task" } } }
+        },
+        {
+          "id": "name-field",
+          "component": {
+            "TextField": {
+              "label": { "literalString": "Task name" },
+              "text": { "path": "/form/name" },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "priority-label",
+          "component": { "Text": { "usageHint": "h5", "text": { "literalString": "Priority" } } }
+        },
+        {
+          "id": "priority-picker",
+          "component": {
+            "MultipleChoice": {
+              "selections": { "path": "/form/priority" },
+              "maxAllowedSelections": 1,
+              "variant": "chips",
+              "options": [
+                { "label": { "literalString": "Low"      }, "value": "low"      },
+                { "label": { "literalString": "Medium"   }, "value": "medium"   },
+                { "label": { "literalString": "High"     }, "value": "high"     },
+                { "label": { "literalString": "Critical" }, "value": "critical" }
+              ]
+            }
+          }
+        },
+        {
+          "id": "categories-label",
+          "component": { "Text": { "usageHint": "h5", "text": { "literalString": "Team" } } }
+        },
+        {
+          "id": "categories-picker",
+          "component": {
+            "MultipleChoice": {
+              "selections": { "literalArray": [] },
+              "variant": "checkbox",
+              "options": [
+                { "label": { "literalString": "Engineering"  }, "value": "engineering"  },
+                { "label": { "literalString": "Design"       }, "value": "design"       },
+                { "label": { "literalString": "Product"      }, "value": "product"      },
+                { "label": { "literalString": "Research"     }, "value": "research"     },
+                { "label": { "literalString": "Operations"   }, "value": "operations"   }
+              ]
+            }
+          }
+        },
+        {
+          "id": "due-date",
+          "component": {
+            "DateTimeInput": {
+              "value": { "path": "/form/dueDate" },
+              "enableDate": true,
+              "enableTime": false
+            }
+          }
+        },
+        {
+          "id": "urgent-check",
+          "component": {
+            "CheckBox": {
+              "label": { "literalString": "Mark as urgent" },
+              "value": { "path": "/form/urgent" }
+            }
+          }
+        },
+        {
+          "id": "form-divider",
+          "component": { "Divider": {} }
+        },
+        {
+          "id": "button-row",
+          "component": {
+            "Row": {
+              "distribution": "end",
+              "children": { "explicitList": ["cancel-btn", "submit-btn"] }
+            }
+          }
+        },
+        {
+          "id": "cancel-btn",
+          "component": {
+            "Button": {
+              "child": "cancel-text",
+              "action": { "name": "cancel_form" }
+            }
+          }
+        },
+        {
+          "id": "cancel-text",
+          "component": { "Text": { "text": { "literalString": "Cancel" } } }
+        },
+        {
+          "id": "submit-btn",
+          "component": {
+            "Button": {
+              "primary": true,
+              "child": "submit-text",
+              "action": {
+                "name": "submit_task",
+                "context": [
+                  { "key": "name",     "value": { "path": "/form/name"     } },
+                  { "key": "priority", "value": { "path": "/form/priority"  } },
+                  { "key": "dueDate",  "value": { "path": "/form/dueDate"   } },
+                  { "key": "urgent",   "value": { "path": "/form/urgent"    } }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "submit-text",
+          "component": { "Text": { "text": { "literalString": "Create Task" } } }
+        }
+      ]
+    }
+  },
+  {
+    "dataModelUpdate": {
+      "surfaceId": "intake",
+      "path": "/",
+      "contents": [
+        {
+          "key": "form",
+          "valueMap": [
+            { "key": "name",     "valueString":  ""      },
+            { "key": "priority", "valueString":  "medium" },
+            { "key": "dueDate",  "valueString":  ""       },
+            { "key": "urgent",   "valueBoolean": false    }
+          ]
+        }
+      ]
+    }
+  }
+]

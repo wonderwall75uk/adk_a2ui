@@ -1,0 +1,148 @@
+[
+  {
+    "beginRendering": {
+      "surfaceId": "feedback",
+      "root": "root",
+      "styles": { "primaryColor": "#34A853", "font": "Google Sans" }
+    }
+  },
+  {
+    "surfaceUpdate": {
+      "surfaceId": "feedback",
+      "components": [
+        {
+          "id": "root",
+          "component": { "Column": { "children": { "explicitList": ["feedback-card"] } } }
+        },
+        {
+          "id": "feedback-card",
+          "component": { "Card": { "child": "feedback-col" } }
+        },
+        {
+          "id": "feedback-col",
+          "component": {
+            "Column": {
+              "children": {
+                "explicitList": [
+                  "title",
+                  "satisfaction-slider",
+                  "highlights-label",
+                  "highlights-picker",
+                  "comments-field",
+                  "fb-divider",
+                  "fb-btn-row"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "title",
+          "component": { "Text": { "usageHint": "h2", "text": { "literalString": "Share Your Feedback" } } }
+        },
+        {
+          "id": "satisfaction-slider",
+          "component": {
+            "Slider": {
+              "label": { "literalString": "Overall satisfaction (1 = poor, 10 = excellent)" },
+              "value": { "path": "/feedback/score" },
+              "minValue": 1,
+              "maxValue": 10
+            }
+          }
+        },
+        {
+          "id": "highlights-label",
+          "component": { "Text": { "usageHint": "h5", "text": { "literalString": "What went well?" } } }
+        },
+        {
+          "id": "highlights-picker",
+          "component": {
+            "MultipleChoice": {
+              "selections": { "literalArray": [] },
+              "variant": "chips",
+              "options": [
+                { "label": { "literalString": "Fast response"     }, "value": "speed"       },
+                { "label": { "literalString": "Clear explanation"  }, "value": "clarity"     },
+                { "label": { "literalString": "Accurate answers"   }, "value": "accuracy"    },
+                { "label": { "literalString": "Helpful examples"   }, "value": "examples"    },
+                { "label": { "literalString": "Easy to follow"     }, "value": "simplicity"  }
+              ]
+            }
+          }
+        },
+        {
+          "id": "comments-field",
+          "component": {
+            "TextField": {
+              "label": { "literalString": "Additional comments" },
+              "text": { "path": "/feedback/comments" },
+              "textFieldType": "longText"
+            }
+          }
+        },
+        {
+          "id": "fb-divider",
+          "component": { "Divider": {} }
+        },
+        {
+          "id": "fb-btn-row",
+          "component": {
+            "Row": {
+              "distribution": "end",
+              "children": { "explicitList": ["skip-btn", "send-btn"] }
+            }
+          }
+        },
+        {
+          "id": "skip-btn",
+          "component": {
+            "Button": {
+              "child": "skip-text",
+              "action": { "name": "skip_feedback" }
+            }
+          }
+        },
+        {
+          "id": "skip-text",
+          "component": { "Text": { "text": { "literalString": "Skip" } } }
+        },
+        {
+          "id": "send-btn",
+          "component": {
+            "Button": {
+              "primary": true,
+              "child": "send-text",
+              "action": {
+                "name": "submit_feedback",
+                "context": [
+                  { "key": "score",    "value": { "path": "/feedback/score"    } },
+                  { "key": "comments", "value": { "path": "/feedback/comments" } }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "send-text",
+          "component": { "Text": { "text": { "literalString": "Send Feedback" } } }
+        }
+      ]
+    }
+  },
+  {
+    "dataModelUpdate": {
+      "surfaceId": "feedback",
+      "path": "/",
+      "contents": [
+        {
+          "key": "feedback",
+          "valueMap": [
+            { "key": "score",    "valueNumber": 7 },
+            { "key": "comments", "valueString": "" }
+          ]
+        }
+      ]
+    }
+  }
+]

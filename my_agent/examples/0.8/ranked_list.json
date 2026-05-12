@@ -1,0 +1,85 @@
+[
+  {
+    "beginRendering": {
+      "surfaceId": "list",
+      "root": "root",
+      "styles": { "primaryColor": "#EA4335" }
+    }
+  },
+  {
+    "surfaceUpdate": {
+      "surfaceId": "list",
+      "components": [
+        {
+          "id": "root",
+          "component": { "Column": { "children": { "explicitList": ["title", "subtitle", "divider", "items-list"] } } }
+        },
+        {
+          "id": "title",
+          "component": { "Text": { "usageHint": "h1", "text": { "literalString": "Top Programming Languages 2024" } } }
+        },
+        {
+          "id": "subtitle",
+          "component": { "Text": { "usageHint": "caption", "text": { "literalString": "Ranked by popularity and industry demand" } } }
+        },
+        {
+          "id": "divider",
+          "component": { "Divider": {} }
+        },
+        {
+          "id": "items-list",
+          "component": {
+            "List": {
+              "direction": "vertical",
+              "children": { "template": { "componentId": "item-card", "dataBinding": "/items" } }
+            }
+          }
+        },
+        {
+          "id": "item-card",
+          "component": { "Card": { "child": "item-row" } }
+        },
+        {
+          "id": "item-row",
+          "component": { "Row": { "alignment": "center", "children": { "explicitList": ["item-rank", "item-details"] } } }
+        },
+        {
+          "id": "item-rank",
+          "weight": 0,
+          "component": { "Text": { "usageHint": "h2", "text": { "path": "/rank" } } }
+        },
+        {
+          "id": "item-details",
+          "weight": 1,
+          "component": { "Column": { "children": { "explicitList": ["item-name", "item-desc"] } } }
+        },
+        {
+          "id": "item-name",
+          "component": { "Text": { "usageHint": "h3", "text": { "path": "/name" } } }
+        },
+        {
+          "id": "item-desc",
+          "component": { "Text": { "usageHint": "caption", "text": { "path": "/desc" } } }
+        }
+      ]
+    }
+  },
+  {
+    "dataModelUpdate": {
+      "surfaceId": "list",
+      "path": "/",
+      "contents": [
+        {
+          "key": "items",
+          "valueMap": [
+            { "key": "i1", "valueMap": [ { "key": "rank", "valueString": "#1" }, { "key": "name", "valueString": "Python"     }, { "key": "desc", "valueString": "Dominates AI/ML, scripting, and data science"          } ] },
+            { "key": "i2", "valueMap": [ { "key": "rank", "valueString": "#2" }, { "key": "name", "valueString": "JavaScript" }, { "key": "desc", "valueString": "Essential for the web — browser and Node.js"           } ] },
+            { "key": "i3", "valueMap": [ { "key": "rank", "valueString": "#3" }, { "key": "name", "valueString": "TypeScript" }, { "key": "desc", "valueString": "Typed JavaScript, growing fast in enterprise"          } ] },
+            { "key": "i4", "valueMap": [ { "key": "rank", "valueString": "#4" }, { "key": "name", "valueString": "Rust"       }, { "key": "desc", "valueString": "Systems programming with guaranteed memory safety"    } ] },
+            { "key": "i5", "valueMap": [ { "key": "rank", "valueString": "#5" }, { "key": "name", "valueString": "Go"         }, { "key": "desc", "valueString": "Excellent for cloud services and microservices"        } ] }
+          ]
+        }
+      ]
+    }
+  }
+]

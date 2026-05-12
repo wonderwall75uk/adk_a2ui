@@ -1,0 +1,22 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Environment / secrets
+.env
+
+# ADK session state
+**/.adk/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

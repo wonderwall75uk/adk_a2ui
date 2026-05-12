@@ -1,0 +1,71 @@
+[
+  {
+    "beginRendering": {
+      "surfaceId": "compare",
+      "root": "root",
+      "styles": { "primaryColor": "#34A853" }
+    }
+  },
+  {
+    "surfaceUpdate": {
+      "surfaceId": "compare",
+      "components": [
+        {
+          "id": "root",
+          "component": { "Column": { "children": { "explicitList": ["title", "subtitle", "tabs"] } } }
+        },
+        {
+          "id": "title",
+          "component": { "Text": { "usageHint": "h1", "text": { "literalString": "Python vs JavaScript" } } }
+        },
+        {
+          "id": "subtitle",
+          "component": { "Text": { "usageHint": "caption", "text": { "literalString": "A side-by-side language comparison" } } }
+        },
+        {
+          "id": "tabs",
+          "component": {
+            "Tabs": {
+              "tabItems": [
+                { "title": { "literalString": "Python" },      "child": "py-card" },
+                { "title": { "literalString": "JavaScript" },  "child": "js-card" },
+                { "title": { "literalString": "When to Use" }, "child": "use-card" }
+              ]
+            }
+          }
+        },
+        { "id": "py-card",  "component": { "Card": { "child": "py-col"  } } },
+        { "id": "js-card",  "component": { "Card": { "child": "js-col"  } } },
+        { "id": "use-card", "component": { "Card": { "child": "use-col" } } },
+        {
+          "id": "py-col",
+          "component": { "Column": { "children": { "explicitList": ["py-h", "py-str-h", "py-s1", "py-s2", "py-lim-h", "py-l1"] } } }
+        },
+        { "id": "py-h",    "component": { "Text": { "usageHint": "h2",   "text": { "literalString": "Python"      } } } },
+        { "id": "py-str-h","component": { "Text": { "usageHint": "h4",   "text": { "literalString": "Strengths"   } } } },
+        { "id": "py-s1",   "component": { "Text": { "usageHint": "body", "text": { "literalString": "✅ Best-in-class for data science, ML, and scripting" } } } },
+        { "id": "py-s2",   "component": { "Text": { "usageHint": "body", "text": { "literalString": "✅ Clean, readable syntax — very beginner-friendly"   } } } },
+        { "id": "py-lim-h","component": { "Text": { "usageHint": "h4",   "text": { "literalString": "Limitations" } } } },
+        { "id": "py-l1",   "component": { "Text": { "usageHint": "body", "text": { "literalString": "⚠️ Not native to the browser; slower than compiled languages" } } } },
+        {
+          "id": "js-col",
+          "component": { "Column": { "children": { "explicitList": ["js-h", "js-str-h", "js-s1", "js-s2", "js-lim-h", "js-l1"] } } }
+        },
+        { "id": "js-h",    "component": { "Text": { "usageHint": "h2",   "text": { "literalString": "JavaScript"  } } } },
+        { "id": "js-str-h","component": { "Text": { "usageHint": "h4",   "text": { "literalString": "Strengths"   } } } },
+        { "id": "js-s1",   "component": { "Text": { "usageHint": "body", "text": { "literalString": "✅ Runs natively in every browser — essential for frontend" } } } },
+        { "id": "js-s2",   "component": { "Text": { "usageHint": "body", "text": { "literalString": "✅ Full-stack with Node.js — one language front and back"   } } } },
+        { "id": "js-lim-h","component": { "Text": { "usageHint": "h4",   "text": { "literalString": "Limitations" } } } },
+        { "id": "js-l1",   "component": { "Text": { "usageHint": "body", "text": { "literalString": "⚠️ Type coercion quirks can cause subtle, hard-to-spot bugs" } } } },
+        {
+          "id": "use-col",
+          "component": { "Column": { "children": { "explicitList": ["use-py-h", "use-py-text", "use-js-h", "use-js-text"] } } }
+        },
+        { "id": "use-py-h",   "component": { "Text": { "usageHint": "h4",   "text": { "literalString": "Choose Python when…"       } } } },
+        { "id": "use-py-text","component": { "Text": { "usageHint": "body", "text": { "literalString": "You need data analysis, machine learning, automation, or scientific computing." } } } },
+        { "id": "use-js-h",   "component": { "Text": { "usageHint": "h4",   "text": { "literalString": "Choose JavaScript when…"    } } } },
+        { "id": "use-js-text","component": { "Text": { "usageHint": "body", "text": { "literalString": "You are building a web application, browser extension, or want a unified frontend/backend stack." } } } }
+      ]
+    }
+  }
+]

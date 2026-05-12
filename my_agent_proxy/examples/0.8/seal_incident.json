@@ -1,0 +1,865 @@
+[
+  {
+    "beginRendering": {
+      "surfaceId": "seal-incident-report",
+      "root": "root",
+      "styles": {
+        "primaryColor": "#EA4335",
+        "font": "Google Sans"
+      }
+    }
+  },
+  {
+    "surfaceUpdate": {
+      "surfaceId": "seal-incident-report",
+      "components": [
+        {
+          "id": "root",
+          "component": {
+            "Card": {
+              "child": "main-column"
+            }
+          }
+        },
+        {
+          "id": "main-column",
+          "component": {
+            "Column": {
+              "children": {
+                "explicitList": [
+                  "header-text",
+                  "date-time-site-row",
+                  "divider1",
+                  "reporting-personnel-section",
+                  "divider2",
+                  "driver-info-section",
+                  "divider3",
+                  "truck-info-section",
+                  "divider4",
+                  "seal-info-section",
+                  "divider5",
+                  "trailer-paperwork-section",
+                  "divider6",
+                  "additional-notes-section",
+                  "warning-text",
+                  "submit-row"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "header-text",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "SEAL INCIDENT REPORT"
+              },
+              "usageHint": "h2"
+            }
+          }
+        },
+        {
+          "id": "date-time-site-row",
+          "component": {
+            "Row": {
+              "children": {
+                "explicitList": [
+                  "date-input",
+                  "time-input",
+                  "site-code-picker"
+                ]
+              },
+              "distribution": "spaceBetween"
+            }
+          }
+        },
+        {
+          "id": "date-input",
+          "component": {
+            "DateTimeInput": {
+              "label": {
+                "literalString": "Date of Incident"
+              },
+              "value": {
+                "path": "/form/dateInput"
+              },
+              "enableDate": true,
+              "enableTime": false
+            }
+          }
+        },
+        {
+          "id": "time-input",
+          "component": {
+            "DateTimeInput": {
+              "label": {
+                "literalString": "Time of Incident"
+              },
+              "value": {
+                "path": "/form/timeInput"
+              },
+              "enableDate": false,
+              "enableTime": true
+            }
+          }
+        },
+        {
+          "id": "site-code-picker",
+          "component": {
+            "MultipleChoice": {
+              "selections": {
+                "path": "/form/siteCodePicker"
+              },
+              "options": [
+                {
+                  "label": {
+                    "literalString": "Site 1"
+                  },
+                  "value": "site1"
+                },
+                {
+                  "label": {
+                    "literalString": "Site 2"
+                  },
+                  "value": "site2"
+                }
+              ],
+              "maxAllowedSelections": 1,
+              "variant": "chips"
+            }
+          }
+        },
+        {
+          "id": "divider1",
+          "component": {
+            "Divider": {}
+          }
+        },
+        {
+          "id": "reporting-personnel-section",
+          "component": {
+            "Column": {
+              "children": {
+                "explicitList": [
+                  "reporting-personnel-header",
+                  "reporting-name-input",
+                  "reporting-phone-input"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "reporting-personnel-header",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "REPORTING PERSONNEL"
+              },
+              "usageHint": "h4"
+            }
+          }
+        },
+        {
+          "id": "reporting-name-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "Name"
+              },
+              "text": {
+                "path": "/form/reportingNameInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "reporting-phone-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "Phone"
+              },
+              "text": {
+                "path": "/form/reportingPhoneInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "divider2",
+          "component": {
+            "Divider": {}
+          }
+        },
+        {
+          "id": "driver-info-section",
+          "component": {
+            "Column": {
+              "children": {
+                "explicitList": [
+                  "driver-info-header",
+                  "driver-name-input",
+                  "driver-employer-input",
+                  "driver-id-input"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "driver-info-header",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "DRIVER INFORMATION"
+              },
+              "usageHint": "h4"
+            }
+          }
+        },
+        {
+          "id": "driver-name-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "Name"
+              },
+              "text": {
+                "path": "/form/driverNameInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "driver-employer-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "Employer"
+              },
+              "text": {
+                "path": "/form/driverEmployerInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "driver-id-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "Company ID / Drivers License #"
+              },
+              "text": {
+                "path": "/form/driverIdInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "divider3",
+          "component": {
+            "Divider": {}
+          }
+        },
+        {
+          "id": "truck-info-section",
+          "component": {
+            "Column": {
+              "children": {
+                "explicitList": [
+                  "truck-info-header",
+                  "truck-company-input",
+                  "truck-usdot-input",
+                  "truck-license-input",
+                  "truck-color-input"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "truck-info-header",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "TRUCK INFORMATION"
+              },
+              "usageHint": "h4"
+            }
+          }
+        },
+        {
+          "id": "truck-company-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "Company"
+              },
+              "text": {
+                "path": "/form/truckCompanyInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "truck-usdot-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "USDOT #"
+              },
+              "text": {
+                "path": "/form/truckUsdotInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "truck-license-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "License Plate # / State"
+              },
+              "text": {
+                "path": "/form/truckLicenseInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "truck-color-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "Color"
+              },
+              "text": {
+                "path": "/form/truckColorInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "divider4",
+          "component": {
+            "Divider": {}
+          }
+        },
+        {
+          "id": "seal-info-section",
+          "component": {
+            "Column": {
+              "children": {
+                "explicitList": [
+                  "seal-info-header",
+                  "seal-issue-label",
+                  "seal-issue-options",
+                  "seal-bol-input",
+                  "seal-trailer-input",
+                  "seal-damage-desc-label",
+                  "seal-damage-desc-input",
+                  "seal-law-enforcement-label",
+                  "seal-law-enforcement-input"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "seal-info-header",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "SEAL INFORMATION"
+              },
+              "usageHint": "h4"
+            }
+          }
+        },
+        {
+          "id": "seal-issue-label",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "Seal Issue:"
+              },
+              "usageHint": "body"
+            }
+          }
+        },
+        {
+          "id": "seal-issue-options",
+          "component": {
+            "Column": {
+              "children": {
+                "explicitList": [
+                  "seal-issue-option1",
+                  "seal-issue-option2",
+                  "seal-issue-option3"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "seal-issue-option1",
+          "component": {
+            "CheckBox": {
+              "label": {
+                "literalString": "Does Not Match Paperwork"
+              },
+              "value": {
+                "path": "/form/sealIssueOption1"
+              }
+            }
+          }
+        },
+        {
+          "id": "seal-issue-option2",
+          "component": {
+            "CheckBox": {
+              "label": {
+                "literalString": "Broken/Damaged"
+              },
+              "value": {
+                "path": "/form/sealIssueOption2"
+              }
+            }
+          }
+        },
+        {
+          "id": "seal-issue-option3",
+          "component": {
+            "CheckBox": {
+              "label": {
+                "literalString": "Missing"
+              },
+              "value": {
+                "path": "/form/sealIssueOption3"
+              }
+            }
+          }
+        },
+        {
+          "id": "seal-bol-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "Seal # on BOL"
+              },
+              "text": {
+                "path": "/form/sealBolInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "seal-trailer-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "Seal # on Trailer"
+              },
+              "text": {
+                "path": "/form/sealTrailerInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "seal-damage-desc-label",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "Description of Seal Damage:"
+              },
+              "usageHint": "body"
+            }
+          }
+        },
+        {
+          "id": "seal-damage-desc-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": ""
+              },
+              "text": {
+                "path": "/form/sealDamageDescInput"
+              },
+              "textFieldType": "longText"
+            }
+          }
+        },
+        {
+          "id": "seal-law-enforcement-label",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "If Seal was Removed by Law Enforcement, Give Incident # or Agency Information:"
+              },
+              "usageHint": "body"
+            }
+          }
+        },
+        {
+          "id": "seal-law-enforcement-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": ""
+              },
+              "text": {
+                "path": "/form/sealLawEnforcementInput"
+              },
+              "textFieldType": "longText"
+            }
+          }
+        },
+        {
+          "id": "divider5",
+          "component": {
+            "Divider": {}
+          }
+        },
+        {
+          "id": "trailer-paperwork-section",
+          "component": {
+            "Column": {
+              "children": {
+                "explicitList": [
+                  "trailer-paperwork-header",
+                  "carrier-input",
+                  "trailer-number-input",
+                  "condition-label",
+                  "condition-options",
+                  "bol-number-input"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "trailer-paperwork-header",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "TRAILER/PAPERWORK INFORMATION"
+              },
+              "usageHint": "h4"
+            }
+          }
+        },
+        {
+          "id": "carrier-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "Carrier"
+              },
+              "text": {
+                "path": "/form/carrierInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "trailer-number-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "Trailer #"
+              },
+              "text": {
+                "path": "/form/trailerNumberInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "condition-label",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "Condition:"
+              },
+              "usageHint": "body"
+            }
+          }
+        },
+        {
+          "id": "condition-options",
+          "component": {
+            "Column": {
+              "children": {
+                "explicitList": [
+                  "condition-good",
+                  "condition-damaged"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "condition-good",
+          "component": {
+            "CheckBox": {
+              "label": {
+                "literalString": "Good"
+              },
+              "value": {
+                "path": "/form/conditionGood"
+              }
+            }
+          }
+        },
+        {
+          "id": "condition-damaged",
+          "component": {
+            "CheckBox": {
+              "label": {
+                "literalString": "Damaged"
+              },
+              "value": {
+                "path": "/form/conditionDamaged"
+              }
+            }
+          }
+        },
+        {
+          "id": "bol-number-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": "BOL #"
+              },
+              "text": {
+                "path": "/form/bolNumberInput"
+              },
+              "textFieldType": "shortText"
+            }
+          }
+        },
+        {
+          "id": "divider6",
+          "component": {
+            "Divider": {}
+          }
+        },
+        {
+          "id": "additional-notes-section",
+          "component": {
+            "Column": {
+              "children": {
+                "explicitList": [
+                  "additional-notes-label",
+                  "additional-notes-input"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "additional-notes-label",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "Additional Incident Notes:"
+              },
+              "usageHint": "body"
+            }
+          }
+        },
+        {
+          "id": "additional-notes-input",
+          "component": {
+            "TextField": {
+              "label": {
+                "literalString": ""
+              },
+              "text": {
+                "path": "/form/additionalNotesInput"
+              },
+              "textFieldType": "longText"
+            }
+          }
+        },
+        {
+          "id": "warning-text",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "WARNING: If the seal is broken, missing, or does not match the paperwork, do not open the trailer. Provide driver a door position and notify a Supervisor or Corporate Security immediately for resolution."
+              },
+              "usageHint": "caption"
+            }
+          }
+        },
+        {
+          "id": "submit-row",
+          "component": {
+            "Row": {
+              "distribution": "end",
+              "children": {
+                "explicitList": [
+                  "submit-btn"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "submit-btn",
+          "component": {
+            "Button": {
+              "primary": true,
+              "child": "submit-text",
+              "action": {
+                "name": "submit_incident_report"
+              }
+            }
+          }
+        },
+        {
+          "id": "submit-text",
+          "component": {
+            "Text": {
+              "text": {
+                "literalString": "Submit Report"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "dataModelUpdate": {
+      "surfaceId": "seal-incident-report",
+      "contents": [
+        {
+          "key": "form",
+          "valueMap": [
+            {
+              "key": "dateInput",
+              "valueString": ""
+            },
+            {
+              "key": "timeInput",
+              "valueString": ""
+            },
+            {
+              "key": "siteCodePicker",
+              "valueString": ""
+            },
+            {
+              "key": "reportingNameInput",
+              "valueString": ""
+            },
+            {
+              "key": "reportingPhoneInput",
+              "valueString": ""
+            },
+            {
+              "key": "driverNameInput",
+              "valueString": ""
+            },
+            {
+              "key": "driverEmployerInput",
+              "valueString": ""
+            },
+            {
+              "key": "driverIdInput",
+              "valueString": ""
+            },
+            {
+              "key": "truckCompanyInput",
+              "valueString": ""
+            },
+            {
+              "key": "truckUsdotInput",
+              "valueString": ""
+            },
+            {
+              "key": "truckLicenseInput",
+              "valueString": ""
+            },
+            {
+              "key": "truckColorInput",
+              "valueString": ""
+            },
+            {
+              "key": "sealIssueOption1",
+              "valueBoolean": false
+            },
+            {
+              "key": "sealIssueOption2",
+              "valueBoolean": false
+            },
+            {
+              "key": "sealIssueOption3",
+              "valueBoolean": false
+            },
+            {
+              "key": "sealBolInput",
+              "valueString": ""
+            },
+            {
+              "key": "sealTrailerInput",
+              "valueString": ""
+            },
+            {
+              "key": "sealDamageDescInput",
+              "valueString": ""
+            },
+            {
+              "key": "sealLawEnforcementInput",
+              "valueString": ""
+            },
+            {
+              "key": "carrierInput",
+              "valueString": ""
+            },
+            {
+              "key": "trailerNumberInput",
+              "valueString": ""
+            },
+            {
+              "key": "conditionGood",
+              "valueBoolean": false
+            },
+            {
+              "key": "conditionDamaged",
+              "valueBoolean": false
+            },
+            {
+              "key": "bolNumberInput",
+              "valueString": ""
+            },
+            {
+              "key": "additionalNotesInput",
+              "valueString": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

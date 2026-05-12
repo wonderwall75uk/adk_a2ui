@@ -1,0 +1,144 @@
+[
+  {
+    "beginRendering": {
+      "surfaceId": "info",
+      "root": "root",
+      "styles": { "primaryColor": "#4285F4" }
+    }
+  },
+  {
+    "surfaceUpdate": {
+      "surfaceId": "info",
+      "components": [
+        {
+          "id": "root",
+          "component": { "Column": { "children": { "explicitList": ["title", "subtitle", "tabs"] } } }
+        },
+        {
+          "id": "title",
+          "component": { "Text": { "usageHint": "h1", "text": { "literalString": "The Solar System" } } }
+        },
+        {
+          "id": "subtitle",
+          "component": { "Text": { "usageHint": "caption", "text": { "literalString": "Our cosmic neighbourhood" } } }
+        },
+        {
+          "id": "tabs",
+          "component": {
+            "Tabs": {
+              "tabItems": [
+                { "title": { "literalString": "Overview" }, "child": "overview-card" },
+                { "title": { "literalString": "Key Facts" }, "child": "facts-card" },
+                { "title": { "literalString": "Planets" },   "child": "planets-card" }
+              ]
+            }
+          }
+        },
+        {
+          "id": "overview-card",
+          "component": { "Card": { "child": "overview-col" } }
+        },
+        {
+          "id": "overview-col",
+          "component": { "Column": { "children": { "explicitList": ["overview-text"] } } }
+        },
+        {
+          "id": "overview-text",
+          "component": { "Text": { "usageHint": "body", "text": { "literalString": "The Solar System consists of the Sun and everything bound to it by gravity — eight planets, dozens of moons, millions of asteroids, and countless comets spanning roughly 287 billion km." } } }
+        },
+        {
+          "id": "facts-card",
+          "component": { "Card": { "child": "facts-col" } }
+        },
+        {
+          "id": "facts-col",
+          "component": { "Column": { "children": { "explicitList": ["f1-row", "f2-row", "f3-row"] } } }
+        },
+        {
+          "id": "f1-row",
+          "component": { "Row": { "alignment": "center", "children": { "explicitList": ["f1-icon", "f1-text"] } } }
+        },
+        {
+          "id": "f1-icon",
+          "component": { "Icon": { "name": { "literalString": "star" } } }
+        },
+        {
+          "id": "f1-text",
+          "component": { "Text": { "usageHint": "body", "text": { "literalString": "Age: ~4.6 billion years" } } }
+        },
+        {
+          "id": "f2-row",
+          "component": { "Row": { "alignment": "center", "children": { "explicitList": ["f2-icon", "f2-text"] } } }
+        },
+        {
+          "id": "f2-icon",
+          "component": { "Icon": { "name": { "literalString": "locationOn" } } }
+        },
+        {
+          "id": "f2-text",
+          "component": { "Text": { "usageHint": "body", "text": { "literalString": "Located in the Milky Way galaxy, Orion Arm" } } }
+        },
+        {
+          "id": "f3-row",
+          "component": { "Row": { "alignment": "center", "children": { "explicitList": ["f3-icon", "f3-text"] } } }
+        },
+        {
+          "id": "f3-icon",
+          "component": { "Icon": { "name": { "literalString": "info" } } }
+        },
+        {
+          "id": "f3-text",
+          "component": { "Text": { "usageHint": "body", "text": { "literalString": "The Sun contains 99.86% of the system's total mass" } } }
+        },
+        {
+          "id": "planets-card",
+          "component": { "Card": { "child": "planets-list" } }
+        },
+        {
+          "id": "planets-list",
+          "component": {
+            "List": {
+              "direction": "vertical",
+              "children": { "template": { "componentId": "planet-row", "dataBinding": "/planets" } }
+            }
+          }
+        },
+        {
+          "id": "planet-row",
+          "component": { "Row": { "alignment": "center", "children": { "explicitList": ["planet-name", "planet-detail"] } } }
+        },
+        {
+          "id": "planet-name",
+          "weight": 1,
+          "component": { "Text": { "usageHint": "h4", "text": { "path": "/name" } } }
+        },
+        {
+          "id": "planet-detail",
+          "weight": 2,
+          "component": { "Text": { "usageHint": "body", "text": { "path": "/detail" } } }
+        }
+      ]
+    }
+  },
+  {
+    "dataModelUpdate": {
+      "surfaceId": "info",
+      "path": "/",
+      "contents": [
+        {
+          "key": "planets",
+          "valueMap": [
+            { "key": "p1", "valueMap": [ { "key": "name", "valueString": "Mercury" }, { "key": "detail", "valueString": "Smallest planet, closest to the Sun" } ] },
+            { "key": "p2", "valueMap": [ { "key": "name", "valueString": "Venus"   }, { "key": "detail", "valueString": "Hottest planet, shrouded in thick clouds"         } ] },
+            { "key": "p3", "valueMap": [ { "key": "name", "valueString": "Earth"   }, { "key": "detail", "valueString": "The only known planet with life"                  } ] },
+            { "key": "p4", "valueMap": [ { "key": "name", "valueString": "Mars"    }, { "key": "detail", "valueString": "The Red Planet, hosts Olympus Mons"               } ] },
+            { "key": "p5", "valueMap": [ { "key": "name", "valueString": "Jupiter" }, { "key": "detail", "valueString": "Largest planet, has the Great Red Spot"           } ] },
+            { "key": "p6", "valueMap": [ { "key": "name", "valueString": "Saturn"  }, { "key": "detail", "valueString": "Famous for its spectacular ring system"           } ] },
+            { "key": "p7", "valueMap": [ { "key": "name", "valueString": "Uranus"  }, { "key": "detail", "valueString": "Ice giant that rotates on its side"               } ] },
+            { "key": "p8", "valueMap": [ { "key": "name", "valueString": "Neptune" }, { "key": "detail", "valueString": "Furthest planet, fiercest winds in the system"    } ] }
+          ]
+        }
+      ]
+    }
+  }
+]
